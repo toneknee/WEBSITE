@@ -39,14 +39,9 @@ const NavBar = () => {
           </div>
           <nav className="mx-6 flex items-center space-x-4 lg:space-x-6 hidden md:block">
             {contacts.map((contacts) => (
-              <Button
-                asChild
-                variant="ghost"
-                size="icon"
-                className="scale-125"
-                key={contacts.id}
-              >
+              <Button asChild variant="ghost" size="icon" className="scale-125">
                 <Link
+                  key={contacts.id}
                   href={contacts.href}
                   className="text-sm font-medium transition-colors"
                 >

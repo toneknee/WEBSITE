@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 const About = () => {
   return (
     <>
-      <div className="min-h-[45vh] flex items-center justify-between">
+      <div className="min-h-[45vh] flex items-center justify-between mx-5">
         <div>
           <h1 className="font-bold text-6xl my-5">Hi,</h1>
           <p className="text-2xl">
