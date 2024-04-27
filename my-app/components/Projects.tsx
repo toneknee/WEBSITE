@@ -11,7 +11,7 @@ const Projects = () => {
   const work = [
     {
       id: "0",
-      imageUrl: "public/../Portfolioproject.png",
+      imageUrl: "public/../Portfolioproject.PNG",
       description:
         "My portfolio website I developed with React, Next.js and TailWind.css using Shadcn components! I am still working on additional features for this project.",
     },
