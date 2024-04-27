@@ -33,15 +33,20 @@ const NavBar = () => {
   return (
     <header className="sm:flex sm:justify-between py-3 px-4 border-b">
       <Container>
-        <div className="relative px-4 sm:px-6 lg: px-8 flex h-16 items-center justify-between w-full">
+        <div className="relative px-4 sm:px-6 lg: flex h-16 items-center justify-between w-full">
           <div className="flex items-center">
             <h1 className="text-xl font-bold ml-4 lg:ml-0">Tony Trinh</h1>
           </div>
-          <nav className="mx-6 flex items-center space-x-4 lg:space-x-6 hidden md:block">
+          <nav className="mx-6 flex items-center space-x-4 lg:space-x-6 md:block">
             {contacts.map((contacts) => (
-              <Button asChild variant="ghost" size="icon" className="scale-125">
+              <Button
+                asChild
+                variant="ghost"
+                size="icon"
+                className="scale-125"
+                key={contacts.id}
+              >
                 <Link
-                  key={contacts.id}
                   href={contacts.href}
                   className="text-sm font-medium transition-colors"
                 >
