@@ -57,11 +57,11 @@ const Skills = () => {
     <>
       <div className="flex flex-col items-center justify-center my-11">
         <h1 className="font-bold text-6xl my-5 ">Skills</h1>
-        <div className="grid grid-cols-3 gap-8 my-5">
+        <div className="grid grid-cols-3 gap-8 my-5 sm: ml-4 mr-4">
           {languages.map((language) => (
             <Card
               key={language.id}
-              className="flex flex-col justify-center items-center py-7 px-8 hover:shadow-lg transition-shadow duration-300"
+              className="flex flex-col justify-center items-center py-7 px-8"
             >
               <CardTitle className="text-center scale-150">
                 {language.label}
