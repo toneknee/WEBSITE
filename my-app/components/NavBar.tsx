@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Button } from "./ui/button";
 import Container from "./ui/container";
 import { TiSocialLinkedin } from "react-icons/ti";
@@ -9,6 +10,9 @@ import { Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const NavBar = () => {
+  const [currentTheme, setCurrentTheme] = useState("dark");
+  const { setTheme } = useTheme();
+
   const contacts = [
     {
       href: "https://github.com/toneknee",
@@ -27,17 +31,16 @@ const NavBar = () => {
     },
   ];
 
-  const { theme, setTheme } = useTheme();
-  theme === "dark";
+  const toggleTheme = () => {
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    setCurrentTheme(newTheme);
+    setTheme(newTheme);
+  };
 
   return (
     <header
       className={`sm:flex sm:justify-between py-3 px-4 border-b sticky top-0 ${
-        theme === "dark"
-          ? "bg-slate-950"
-          : theme === "light"
-          ? "bg-white"
-          : "bg-slate-950"
+        currentTheme === "dark" ? "bg-slate-950" : "bg-white"
       } z-50`}
     >
       <Container>
@@ -46,17 +49,17 @@ const NavBar = () => {
             <h1 className="text-xl font-bold ml-4 lg:ml-0">Tony Trinh</h1>
           </div>
           <nav className="mx-6 flex items-center space-x-4 lg:space-x-6 md:block">
-            {contacts.map((contacts) => (
+            {contacts.map((contact) => (
               <Button
                 asChild
                 variant="ghost"
                 size="icon"
                 className="scale-125 cursor-pointer"
-                key={contacts.id}
-                onClick={() => window.open(contacts.href, "_blank")}
+                key={contact.id}
+                onClick={() => window.open(contact.href, "_blank")}
               >
                 <div className="text-sm font-medium transition-colors">
-                  {contacts.label}
+                  {contact.label}
                 </div>
               </Button>
             ))}
@@ -67,10 +70,25 @@ const NavBar = () => {
               size="icon"
               aria-label="Toggle Theme"
               className="mr-6"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              onClick={toggleTheme}
             >
-              <Sun className="h-6 w-6 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-6 w-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+              {currentTheme === "dark" ? (
+                <Sun
+                  className={`h-6 w-6 transition-all ${
+                    currentTheme === "dark"
+                      ? "rotate-0 scale-100"
+                      : "rotate-90 scale-0"
+                  }`}
+                />
+              ) : (
+                <Moon
+                  className={`absolute h-6 w-6 transition-all ${
+                    currentTheme === "dark"
+                      ? "rotate-90 scale-0"
+                      : "rotate-0 scale-100"
+                  }`}
+                />
+              )}
             </Button>
           </div>
         </div>
