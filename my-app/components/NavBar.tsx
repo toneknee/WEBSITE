@@ -28,6 +28,7 @@ const NavBar = () => {
   ];
 
   const { theme, setTheme } = useTheme();
+  theme === "dark";
 
   return (
     <header
