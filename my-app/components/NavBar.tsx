@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
 import Container from "./ui/container";
 import { TiSocialLinkedin } from "react-icons/ti";
@@ -10,7 +10,17 @@ import { Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 
 const NavBar = () => {
-  const [currentTheme, setCurrentTheme] = useState("dark");
+  const [currentTheme, setCurrentTheme] = useState("light"); // Default theme to light
+
+  // Set initial theme state based on system preference
+  useEffect(() => {
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+    setCurrentTheme(systemTheme);
+  }, []);
+
   const { setTheme } = useTheme();
 
   const contacts = [
@@ -73,21 +83,9 @@ const NavBar = () => {
               onClick={toggleTheme}
             >
               {currentTheme === "dark" ? (
-                <Sun
-                  className={`h-6 w-6 transition-all ${
-                    currentTheme === "dark"
-                      ? "rotate-0 scale-100"
-                      : "rotate-90 scale-0"
-                  }`}
-                />
+                <Sun className="h-6 w-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
               ) : (
-                <Moon
-                  className={`absolute h-6 w-6 transition-all ${
-                    currentTheme === "dark"
-                      ? "rotate-90 scale-0"
-                      : "rotate-0 scale-100"
-                  }`}
-                />
+                <Moon className="h-6 w-6 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
               )}
             </Button>
           </div>
