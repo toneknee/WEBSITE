@@ -30,7 +30,7 @@ const Projects = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center my-11">
+    <div className="flex relative flex-col items-center justify-center my-11">
       <h1 className="font-bold text-6xl my-5">Projects</h1>
       <Carousel className="w-full max-w-xs my-5">
         <CarouselContent>

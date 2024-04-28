@@ -2,7 +2,6 @@
 
 import { Button } from "./ui/button";
 import Container from "./ui/container";
-import Link from "next/link";
 import { TiSocialLinkedin } from "react-icons/ti";
 import { FaGithub } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
@@ -31,7 +30,15 @@ const NavBar = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <header className="sm:flex sm:justify-between py-3 px-4 border-b">
+    <header
+      className={`sm:flex sm:justify-between py-3 px-4 border-b sticky top-0 ${
+        theme === "dark"
+          ? "bg-slate-950"
+          : theme === "light"
+          ? "bg-white"
+          : "bg-slate-950"
+      } z-50`}
+    >
       <Container>
         <div className="relative px-4 sm:px-6 lg: flex h-16 items-center justify-between w-full">
           <div className="flex items-center">
@@ -43,15 +50,13 @@ const NavBar = () => {
                 asChild
                 variant="ghost"
                 size="icon"
-                className="scale-125"
+                className="scale-125 cursor-pointer"
                 key={contacts.id}
+                onClick={() => window.open(contacts.href, "_blank")}
               >
-                <Link
-                  href={contacts.href}
-                  className="text-sm font-medium transition-colors"
-                >
+                <div className="text-sm font-medium transition-colors">
                   {contacts.label}
-                </Link>
+                </div>
               </Button>
             ))}
           </nav>
