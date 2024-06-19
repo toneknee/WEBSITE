@@ -16,7 +16,10 @@ const About = () => {
             who thrives on challenges, let&apos;s connect!
           </p>
           <Button className="mt-10">
-            <a href="public/../Tony Trinh 2024.pdf" download="TonyTrinh.pdf">
+            <a
+              href="public/../Tony Trinh 2024.pdf"
+              download="Tony Trinh 2024 - no number.pdf"
+            >
               Resume
             </a>
           </Button>
