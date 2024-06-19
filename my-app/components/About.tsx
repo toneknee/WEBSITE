@@ -17,8 +17,8 @@ const About = () => {
           </p>
           <Button className="mt-10">
             <a
-              href="public/../Tony Trinh 2024.pdf"
-              download="Tony Trinh 2024 - no number.pdf"
+              href="public/../Tony_Trinh_2024.pdf"
+              download="Tony_Trinh_2024.pdf"
             >
               Resume
             </a>
